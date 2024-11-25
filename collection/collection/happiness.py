@@ -6,6 +6,8 @@ from collection.task import Task
 
 
 class HappinessTask(Task):
+    output_name = "happiness.json"
+
     @staticmethod
     def _read_and_attatch_year(path: Path) -> pd.DataFrame:
         df = pd.read_csv(path)
@@ -34,7 +36,7 @@ class HappinessTask(Task):
         ][df["Happiness.Rank"].notna()]
 
     def load(self, df: pd.DataFrame) -> pd.DataFrame:
-        df.to_json(Path(os.getenv("DATA_DIR")) / "happiness.json", orient="records", index=False)
+        df.to_json(Path(os.getenv("DATA_DIR")) / self.output_name, orient="records", index=False)
 
 
 if __name__ == "__main__":

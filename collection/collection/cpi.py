@@ -6,6 +6,8 @@ from collection.task import Task
 
 
 class CpiTask(Task):
+    output_name = "cpi.json"
+
     def extract(self) -> pd.DataFrame:
         url = "https://api.worldbank.org/v2/country/all/indicator/FP.CPI.TOTL"
         print(f"[CpiTask.extract] url: {url}")
@@ -31,7 +33,7 @@ class CpiTask(Task):
         return df.rename(columns={"country_name": "country", "date": "year"})
 
     def load(self, df: pd.DataFrame) -> None:
-        df.to_json(Path(os.getenv("DATA_DIR")) / "cpi.json", orient="records", index=False)
+        df.to_json(Path(os.getenv("DATA_DIR")) / self.output_name, orient="records", index=False)
 
 
 if __name__ == "__main__":

@@ -22,6 +22,7 @@ class CostOfLivingTask(Task):
         "Shanghai",
         "Hong-Kong",
     ]
+    output_name = "cost_of_living.json"
 
     @staticmethod
     def _scrap(city: str, currency: str = "JPY") -> pd.DataFrame:
@@ -60,7 +61,7 @@ class CostOfLivingTask(Task):
         return df[[*keys, *metrics]].groupby(keys).mean().reset_index()
 
     def load(self, df: pd.DataFrame) -> pd.DataFrame:
-        df.to_json(Path(os.getenv("DATA_DIR")) / "cost_of_living.json", orient="records", index=False)
+        df.to_json(Path(os.getenv("DATA_DIR")) / self.output_name, orient="records", index=False)
 
 
 if __name__ == "__main__":

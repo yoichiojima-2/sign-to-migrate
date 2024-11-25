@@ -3,4 +3,4 @@ from tests.test_lib import run_and_check_output
 
 
 def test_happiness():
-    run_and_check_output(HappinessTask, "happiness.json")
+    run_and_check_output(HappinessTask, HappinessTask.output_name)
