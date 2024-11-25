@@ -7,6 +7,22 @@ from collection.task import Task
 
 
 class CostOfLivingTask(Task):
+    cities = [
+        "Tokyo",
+        "London",
+        "New-York",
+        "Brisbane",
+        "Bristol",
+        "Manchester",
+        "Mumbai",
+        "Bangkok",
+        "Kuala-Lumpur",
+        "Singapore",
+        "Taipei",
+        "Shanghai",
+        "Hong-Kong",
+    ]
+
     @staticmethod
     def _scrap(city: str, currency: str = "JPY") -> pd.DataFrame:
         url = f"https://www.numbeo.com/cost-of-living/in/{city}?displayCurrency={currency}"
@@ -36,22 +52,7 @@ class CostOfLivingTask(Task):
         return pd.DataFrame(cost)
 
     def extract(self) -> pd.DataFrame:
-        cities = [
-            "Tokyo",
-            "London",
-            "New-York",
-            "Brisbane",
-            "Bristol",
-            "Manchester",
-            "Mumbai",
-            "Bangkok",
-            "Kuala-Lumpur",
-            "Singapore",
-            "Taipei",
-            "Shanghai",
-            "Hong-Kong",
-        ]
-        return pd.concat([self._scrap(city) for city in cities])
+        return pd.concat([self._scrap(city) for city in self.cities])
 
     def transform(self, df: pd.DataFrame) -> pd.DataFrame:
         keys = ["item", "country", "city"]
