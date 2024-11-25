@@ -34,5 +34,5 @@ venv: .venv/.installed
 .PHONY: test
 test: venv
 	@for project in $(PROJECTS); do \
-		cd $(ROOT)$$project && $(VENV)/bin/pytest -vvv -s ;\
+		cd $(ROOT)/$$project && $(VENV)/bin/pytest -vvv -s ;\
 	done
