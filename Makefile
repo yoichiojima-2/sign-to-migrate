@@ -9,6 +9,7 @@ clean:
 	-find . -name ".pytest_cache" -type d -print -exec rm -rf {} +
 	-find . -name ".ruff_cache" -type d -print -exec rm -rf {} +
 	-find . -name ".ipynb_checkpoints" -type d -print -exec rm -rf {} +
+	-find . -name "*.ipynb" -print -exec jupyter nbconvert --clear-output {} \;
 
 .PHONY: lint
 lint:
@@ -24,7 +25,7 @@ venv: .venv/.installed
 .venv/.installed: 
 	python -m venv $(VENV)
 	$(VENV)/bin/pip install --upgrade pip
-	$(VENV)/bin/pip install pytest
+	$(VENV)/bin/pip install pytest dateutils
 	@for project in $(PROJECTS); do \
 		$(VENV)/bin/pip install -e $$project ;\
 	done
