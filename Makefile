@@ -25,8 +25,9 @@ venv: .venv/.installed
 	python -m venv $(VENV)
 	$(VENV)/bin/pip install --upgrade pip
 	$(VENV)/bin/pip install pytest
-	$(VENV)/bin/pip install -e data-collection
-	$(VENV)/bin/pip install -e server-side
+	@for project in $(PROJECTS); do \
+		$(VENV)/bin/pip install -e $$project ;\
+	done
 	touch $(VENV)/.installed
 
 .PHONY: test
