@@ -7,5 +7,4 @@ from tests.test_lib import run_and_check_output
 def test_cost_of_living():
     run_and_check_output(CostOfLivingTask, CostOfLivingTask.output_name)
     df = pd.read_json(f"{os.getenv('DATA_DIR')}/{CostOfLivingTask.output_name}")
-    print(df[["city"]].drop_duplicates().values)
     assert set(CostOfLivingTask.cities) == set(df["city"].drop_duplicates().values)
