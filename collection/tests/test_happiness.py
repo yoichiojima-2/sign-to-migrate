@@ -1,4 +1,4 @@
-from data_collection.happiness import HappinessTask
+from collection.happiness import HappinessTask
 from tests.test_lib import run_and_check_output
 
 

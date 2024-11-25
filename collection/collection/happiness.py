@@ -2,7 +2,7 @@ import os
 from pathlib import Path
 import pandas as pd
 import kagglehub
-from data_collection.task import Task
+from collection.task import Task
 
 
 class HappinessTask(Task):

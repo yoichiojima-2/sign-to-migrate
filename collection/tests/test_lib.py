@@ -2,7 +2,7 @@ import os
 import json
 from pathlib import Path
 from pprint import pprint
-from data_collection.task import Task
+from collection.task import Task
 
 
 def run_and_check_output(task_class: Task, output_name: str):

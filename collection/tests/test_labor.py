@@ -1,4 +1,4 @@
-from data_collection import labor
+from collection import labor
 from tests.test_lib import run_and_check_output
 
 

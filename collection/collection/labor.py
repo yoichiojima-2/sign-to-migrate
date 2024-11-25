@@ -4,7 +4,7 @@ from dataclasses import dataclass
 from pathlib import Path
 import pandas as pd
 from io import StringIO
-from data_collection.task import Task
+from collection.task import Task
 
 
 @dataclass

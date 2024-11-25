@@ -1,4 +1,4 @@
-from data_collection.cost_of_living import CostOfLivingTask
+from collection.cost_of_living import CostOfLivingTask
 from tests.test_lib import run_and_check_output
 
 

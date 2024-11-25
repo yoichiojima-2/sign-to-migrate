@@ -3,7 +3,7 @@ from pathlib import Path
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
-from data_collection.task import Task
+from collection.task import Task
 
 
 class CostOfLivingTask(Task):

@@ -2,7 +2,7 @@ import os
 import requests
 from pathlib import Path
 import pandas as pd
-from data_collection.task import Task
+from collection.task import Task
 
 
 class CpiTask(Task):
