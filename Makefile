@@ -26,7 +26,7 @@ venv: .venv/.installed
 	python -m venv $(VENV)
 	$(VENV)/bin/pip install --upgrade pip
 	$(VENV)/bin/pip install pytest dateutils
-	@for project in $(PROJECTS); do $(VENV)/bin/pip install -e $$project done
+	@for project in $(PROJECTS); do $(VENV)/bin/pip install -e $$project; done
 	touch $(VENV)/.installed
 
 .PHONY: cleansing-test-data
@@ -37,4 +37,4 @@ cleansing-test-data: venv
 
 .PHONY: test
 test: venv cleansing-test-data
-	@for project in $(PROJECTS); do cd $(ROOT)/$$project && $(VENV)/bin/pytest -vvv -s done
+	@for project in $(PROJECTS); do cd $(ROOT)/$$project && $(VENV)/bin/pytest -vvv -s; done
