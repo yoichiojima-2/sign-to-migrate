@@ -2,11 +2,11 @@ import os
 from pathlib import Path
 from pprint import pprint
 import json
-from cleansing import cost_of_living
+from cleansing.merge import merge
 
 
 def test_cost_of_living():
-    cost_of_living.cleanse()
-    output = Path(os.getenv("DATA_DIR")) / "cost_of_living_cleansed.json"
+    merge()
+    output = Path(os.getenv("DATA_DIR")) / "merged.json"
     pprint(json.load(output.open())[:5])
     assert output.exists()

@@ -21,6 +21,15 @@ class CostOfLivingTask(Task):
         "Taipei",
         "Shanghai",
         "Hong-Kong",
+        "Berlin",
+        "Copenhagen",
+        "Paris",
+        "Dublin",
+        "Amsterdam",
+        "Barcelona",
+        "Glasgow",
+        "Stockholm",
+        "Oslo",
     ]
     output_name = "cost_of_living.json"
 
@@ -58,6 +67,8 @@ class CostOfLivingTask(Task):
     def transform(self, df: pd.DataFrame) -> pd.DataFrame:
         keys = ["item", "country", "city"]
         metrics = ["cost"]
+        # just to join other tables. no political statement here
+        df["country"] = df["country"].apply(lambda x: "China" if ("Hong Kong" in x) or ("Taiwan" in x) else x)
         return df[[*keys, *metrics]].groupby(keys).mean().reset_index()
 
     def load(self, df: pd.DataFrame) -> pd.DataFrame:
